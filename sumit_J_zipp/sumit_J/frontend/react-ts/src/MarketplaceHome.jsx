@@ -6,7 +6,7 @@ export default function MarketplaceHome({ currentSession, onAddToCart, redirectT
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/marketplace/products')
+    axios.get('https://amazon-hackathon.onrender.com/api/marketplace/products')
       .then(response => {
         if (Array.isArray(response.data)) {
           const activeCatalog = response.data.filter(product => {

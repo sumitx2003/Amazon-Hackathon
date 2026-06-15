@@ -9,7 +9,7 @@ export default function ReturnPrevention() {
 
   useEffect(() => {
     // Fetch system products to populate the inspector selector dropdown
-    axios.get('http://localhost:5000/api/marketplace/all-products')
+    axios.get('https://amazon-hackathon.onrender.com/api/marketplace/all-products')
       .then(res => { if (Array.isArray(res.data)) setProducts(res.data); })
       .catch(err => console.error("Error fetching prevention list:", err));
   }, []);
@@ -18,7 +18,7 @@ export default function ReturnPrevention() {
     setLoading(true);
     setAnalysis(null);
     try {
-      const res = await axios.post(`http://localhost:5000/api/marketplace/prevent-return`, { productId });
+      const res = await axios.post(`https://amazon-hackathon.onrender.com/api/marketplace/prevent-return`, { productId });
       if (res.data.success) {
         setAnalysis(res.data.riskProfile);
       }

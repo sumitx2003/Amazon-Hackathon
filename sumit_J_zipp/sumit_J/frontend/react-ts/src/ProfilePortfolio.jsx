@@ -42,7 +42,7 @@ export default function ProfilePortfolio({ currentUser }) {
   useEffect(() => {
     if (!currentUser) return;
 
-    axios.get('http://localhost:5000/api/marketplace/all-products')
+    axios.get('https://amazon-hackathon.onrender.com/api/marketplace/all-products')
       .then(res => {
         if (Array.isArray(res.data)) {
           const allItems = res.data;
@@ -121,7 +121,7 @@ export default function ProfilePortfolio({ currentUser }) {
     const myUserId = currentUser?._id || currentUser?.id;
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/auth/update-profile/${myUserId}`, {
+      const response = await axios.put(`https://amazon-hackathon.onrender.com/api/auth/update-profile/${myUserId}`, {
         name: editForm.name,
         location: editForm.location,
         avatar: editForm.avatar

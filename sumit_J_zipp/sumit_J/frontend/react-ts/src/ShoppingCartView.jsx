@@ -19,7 +19,7 @@ export default function ShoppingCartView({ currentSession, cartItems, setCartIte
     try {
       // Loop over items in the cart and send purchase requests to the backend loop
       for (const item of cartItems) {
-        await axios.post('http://localhost:5000/api/marketplace/purchase', {
+        await axios.post('https://amazon-hackathon.onrender.com/api/marketplace/purchase', {
           productId: item._id,
           buyerId: currentSession._id || currentSession.id,
           shippingData: shippingDetails // Passes along the filled out user details
