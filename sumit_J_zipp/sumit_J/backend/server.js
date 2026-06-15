@@ -55,4 +55,11 @@ app.put("/api/marketplace/admin-decision/:id", executeAdminDecision);
 // 🤖 HACKATHON ROUTE: REGISTER THE COPILOT MULTI-AGENT PIPELINE
 app.post("/api/marketplace/bulk-ai-audit", bulkAiEvaluation);
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Amazon Hackathon Backend is Running 🚀"
+  });
+});
+
 app.listen(port, () => console.log(`🚀 Decoupled Unified Application Engine running on port ${port}`));
