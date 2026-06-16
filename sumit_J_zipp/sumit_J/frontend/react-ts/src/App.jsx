@@ -28,7 +28,7 @@ export default function App() {
     setErrorLog('');
     const targetEndpoint = isRegistering ? 'register' : 'login';
     try {
-      const res = await fetch(`https://amazon-hackathon.onrender.com/api/auth/${targetEndpoint}`, {
+      const res = await fetch(`https://amazon-hackathon-backend-2htg.onrender.com/api/auth/${targetEndpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(authForm)

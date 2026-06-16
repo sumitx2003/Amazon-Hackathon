@@ -62,7 +62,7 @@ export default function ReturnPortal({ currentUser, session }) {
     setUiMessage({ text: "", isError: false });
     try {
       // ⚡ FIX: Updated endpoint path prefix to match your backend marketplace routing controller
-      const response = await axios.post("https://amazon-hackathon.onrender.com/api/marketplace/process-return", {
+      const response = await axios.post("https://amazon-hackathon-backend-2htg.onrender.com/api/marketplace/process-return", {
         ...productData,
         sellerId
       });
@@ -105,7 +105,7 @@ export default function ReturnPortal({ currentUser, session }) {
       };
 
       // ⚡ FIX: Updated endpoint to point accurately to the marketplace confirmation router pipeline
-      const response = await axios.post("https://amazon-hackathon.onrender.com/api/marketplace/finalize-agreement", payload);
+      const response = await axios.post("https://amazon-hackathon-backend-2htg.onrender.com/api/marketplace/finalize-agreement", payload);
       if (response.data.success) {
         setUiMessage({ text: "🎉 Return successfully submitted to the platform administrative review queue!", isError: false });
         setEvaluatedProfile(null);

@@ -13,7 +13,7 @@ export default function AdminDashboard({ onCreditsMinted }) {
 
   const fetchQueueList = () => {
     // Swapped 'admin-queue' with 'all-products' so past accepted/rejected items are loaded into the array
-    axios.get('https://amazon-hackathon.onrender.com/api/marketplace/all-products')
+    axios.get('https://amazon-hackathon-backend-2htg.onrender.com/api/marketplace/all-products')
       .then(res => {
         setQueue(Array.isArray(res.data) ? res.data : []);
         setLoading(false);
@@ -30,7 +30,7 @@ export default function AdminDashboard({ onCreditsMinted }) {
   // ⚡ FIXED: Hardened manual action workflow handler to bypass stale array contexts completely
   const processAction = async (id, action) => {
     try {
-      const res = await axios.put(`https://amazon-hackathon.onrender.com/api/marketplace/admin-decision/${id}`, { action });
+      const res = await axios.put(`https://amazon-hackathon-backend-2htg.onrender.com/api/marketplace/admin-decision/${id}`, { action });
       if (res.status === 200) {
         
         // 🚀 THE FIX: Pull the fresh product values directly from the server response update package!
@@ -63,7 +63,7 @@ export default function AdminDashboard({ onCreditsMinted }) {
   const handleTriggerBulkAiAgent = async () => {
     setAiLoading(true);
     try {
-      const res = await axios.post('https://amazon-hackathon.onrender.com/api/marketplace/bulk-ai-audit');
+      const res = await axios.post('https://amazon-hackathon-backend-2htg.onrender.com/api/marketplace/bulk-ai-audit');
       if (res.data.success) {
         setAiSuggestions(res.data.recommendations);
       }
@@ -82,7 +82,7 @@ export default function AdminDashboard({ onCreditsMinted }) {
     try {
       // Execute decisions sequentially to prevent database connection bottlenecks
       for (const item of aiSuggestions) {
-        const res = await axios.put(`https://amazon-hackathon.onrender.com/api/marketplace/admin-decision/${item._id}`, { 
+        const res = await axios.put(`https://amazon-hackathon-backend-2htg.onrender.com/api/marketplace/admin-decision/${item._id}`, { 
           action: item.action 
         });
 
